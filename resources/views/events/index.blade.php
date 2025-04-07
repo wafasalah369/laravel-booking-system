@@ -83,11 +83,35 @@
             </li>
 
             {{-- Page Numbers --}}
-            @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
-                <li class="page-item {{ $page == $events->currentPage() ? 'active' : '' }}">
-                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+            @php
+            $currentPage = $events->currentPage();
+            $lastPage = $events->lastPage();
+            $start = max(1, $currentPage - 2);
+            $end = min($lastPage, $currentPage + 2);
+        @endphp
+        
+        {{-- First Page --}}
+        @if ($start > 1)
+            <li class="page-item"><a class="page-link" href="{{ $events->url(1) }}">1</a></li>
+            @if ($start > 2)
+                <li class="page-item disabled"><span class="page-link">…</span></li>
+            @endif
+            @endif
+        
+            {{-- Middle Pages --}}
+            @for ($i = $start; $i <= $end; $i++)
+                <li class="page-item {{ $i == $currentPage ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $events->url($i) }}">{{ $i }}</a>
                 </li>
-            @endforeach
+            @endfor
+            
+            {{-- Last Page --}}
+            @if ($end < $lastPage)
+                @if ($end < $lastPage - 1)
+                    <li class="page-item disabled"><span class="page-link">…</span></li>
+                @endif
+                <li class="page-item"><a class="page-link" href="{{ $events->url($lastPage) }}">{{ $lastPage }}</a></li>
+            @endif
 
             {{-- Next Page --}}
             <li class="page-item {{ !$events->hasMorePages() ? 'disabled' : '' }}">

@@ -10,7 +10,7 @@ class EventsTableSeeder extends Seeder
     public function run(): void
     {
         Event::factory()
-            ->count(50)
+            ->count(1000)
             ->hasBookings(rand(0, 10))
             ->create();
     }
