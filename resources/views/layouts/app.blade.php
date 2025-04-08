@@ -15,7 +15,8 @@
     <link href="/css/app.css" rel="stylesheet">
 <body>
     @include('layouts.header')
-    
+    @include('partials.notifications')
+
     <main class="py-4">
         <div class="container">
             @yield('content')

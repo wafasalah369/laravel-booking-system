@@ -15,8 +15,6 @@
         </div>
     </div>
 
-    @include('partials.notifications')
-
     <div class="row g-4">
         @foreach($events as $event)
         <div class="col-lg-4 col-md-6">

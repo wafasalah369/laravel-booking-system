@@ -1,42 +1,42 @@
 @if(session('success'))
-<div class="alert alert-success alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
-    <div class="d-flex align-items-center">
-        <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+<div class="position-relative mx-auto my-3 px-4 py-3 alert alert-success shadow-sm rounded d-flex align-items-start justify-content-between" style="max-width: 900px;">
+    <div class="d-flex align-items-start">
+        <i class="bi bi-check-circle-fill text-success me-3 fs-4 mt-1"></i>
         <div>
-            <h6 class="mb-1 fw-bold">Success!</h6>
+            <h6 class="fw-bold mb-1">Success!</h6>
             <p class="mb-0">{{ session('success') }}</p>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if(session('error'))
-<div class="alert alert-danger alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
-    <div class="d-flex align-items-center">
-        <i class="bi bi-exclamation-triangle-fill me-2 fs-4"></i>
+<div class="position-relative mx-auto my-3 px-4 py-3 alert alert-danger shadow-sm rounded d-flex align-items-start justify-content-between" style="max-width: 900px;">
+    <div class="d-flex align-items-start">
+        <i class="bi bi-exclamation-triangle-fill text-danger me-3 fs-4 mt-1"></i>
         <div>
-            <h6 class="mb-1 fw-bold">Oops!</h6>
+            <h6 class="fw-bold mb-1">Oops!</h6>
             <p class="mb-0">{{ session('error') }}</p>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
 @if($errors->any())
-<div class="alert alert-danger alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
-    <div class="d-flex align-items-center">
-        <i class="bi bi-exclamation-octagon-fill me-2 fs-4"></i>
+<div class="position-relative mx-auto my-3 px-4 py-3 alert alert-danger shadow-sm rounded d-flex align-items-start justify-content-between" style="max-width: 900px;">
+    <div class="d-flex align-items-start">
+        <i class="bi bi-exclamation-octagon-fill text-danger me-3 fs-4 mt-1"></i>
         <div>
-            <h6 class="mb-1 fw-bold">Please fix these issues:</h6>
+            <h6 class="fw-bold mb-2">Please fix these issues:</h6>
             <ul class="mb-0 ps-3">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
